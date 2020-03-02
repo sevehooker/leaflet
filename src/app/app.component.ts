@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import L from 'leaflet';
 
 @Component({
@@ -6,12 +6,12 @@ import L from 'leaflet';
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent extends OnInit {
+export class AppComponent implements AfterViewInit {
   name = 'Angular';
   map: L.Map;
 
-  ngOnInit() {
-    this.map = L.map('map').fitWorld();
+  ngAfterViewInit() {
+    this.map = L.map('mapId').fitWorld();
 
     L.tileLayer('https://api.this.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
       maxZoom: 18,
